@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - Character
 
@@ -50,4 +51,12 @@ struct CharacterListData {
     let name: String
     let status: String
     let origin: CharacterOrigin
+}
+
+struct CharacterDetailData {
+    let name: String
+    let status: String
+    let species: String
+    let origin: CharacterOrigin
+    let image: UIImage
 }

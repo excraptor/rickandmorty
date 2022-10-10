@@ -9,11 +9,15 @@ import Foundation
 
 class CharacterViewModel {
     
-    private var api: API = RickAndMortyApi.instance
+    private var api: RickAndMortyApi = RickAndMortyApi.instance
     
     public func getCharactersFromApi(completion: @escaping (Characters) -> ()) {
         api.fetch(endpoint: "characters") { data in
             completion(data)
         }
+    }
+    
+    public func getSingleCharacterFromApi(withID id: Int, completion: @escaping (Characters) -> ()) {
+        api.getCharacter(detail: id, completion: completion)
     }
 }

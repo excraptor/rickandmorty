@@ -21,23 +21,29 @@ class RickAndMortyApi: API {
     
     func fetch(endpoint: String, completion: @escaping (Characters) -> ()) {
         print("### fetching \(endpoint)")
-        getCharacters { data in
+        getCharacter { data in
             completion(data)
         }
     }
     
-    public func getCharacters(completion: @escaping (Characters) -> ()) {
-        let dataTask = URLSession.shared.dataTask(with: self.baseURL.appendingPathComponent("/character")) { data, _, error in
+    public func getCharacter(detail: Int? = nil, completion: @escaping (Characters) -> ()) {
+        var url = baseURL.appendingPathComponent("/character")
+        if let detail = detail {
+            url = url.appendingPathComponent("/\(detail)")
+        }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
             do {
                 let characterData = try JSONDecoder().decode(Characters.self, from: data)
                 
                 completion(characterData)
             } catch {
-                print("Something went wrong")
+                print("Api call went wrong")
             }
         }
         
         dataTask.resume()
     }
+    
 }

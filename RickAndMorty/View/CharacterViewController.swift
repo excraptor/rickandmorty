@@ -42,6 +42,10 @@ class CharacterViewController: UIViewController {
             self.tableView.invalidateIntrinsicContentSize()
         }
     }
+    
+    private func navigateToDetail() {
+        // TODO: implement - but rather implement Coordinator pattern
+    }
 }
 
 extension CharacterViewController: UITableViewDelegate {
