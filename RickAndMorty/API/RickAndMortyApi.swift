@@ -8,7 +8,7 @@
 import Foundation
 
 protocol API {
-    func fetch(url: String)
+    func fetch(endpoint: String, completion: @escaping (Characters) -> ())
 }
 
 class RickAndMortyApi: API {
@@ -19,11 +19,14 @@ class RickAndMortyApi: API {
     
     private init() { }
     
-    func fetch(url: String) {
-        print("fetching \(url)")
+    func fetch(endpoint: String, completion: @escaping (Characters) -> ()) {
+        print("### fetching \(endpoint)")
+        getCharacters { data in
+            completion(data)
+        }
     }
     
-    func getCharacters(completion: @escaping (Characters) -> ()) {
+    public func getCharacters(completion: @escaping (Characters) -> ()) {
         let dataTask = URLSession.shared.dataTask(with: self.baseURL.appendingPathComponent("/character")) { data, _, error in
             guard let data = data, error == nil else { return }
             do {

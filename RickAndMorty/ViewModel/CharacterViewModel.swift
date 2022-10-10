@@ -11,7 +11,9 @@ class CharacterViewModel {
     
     private var api: API = RickAndMortyApi.instance
     
-    func getCharactersFromApi() {
-        api.fetch(url: "asd.com")
+    public func getCharactersFromApi(completion: @escaping (Characters) -> ()) {
+        api.fetch(endpoint: "characters") { data in
+            completion(data)
+        }
     }
 }

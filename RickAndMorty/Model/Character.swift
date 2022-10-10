@@ -9,22 +9,45 @@ import Foundation
 
 // MARK: - Character
 
-struct Characters: Decodable {
-    let info: String
-    let data: [CharacterModel]
+struct Characters: Codable {
+    let info: CharacterInfo
+    let results: [CharacterModel]
 }
 
-struct CharacterModel: Decodable {
-    let displayName: String
+struct CharacterModel: Codable {
+    let id: Int
+    let name: String
     let status: String
-    let origin: CharacterOrigin
-    
     let species: String
+    let type: String
+    let gender: String
+    let origin: CharacterOrigin
+    let location: CharacterLocation
     let image: String
-    let episodes: [String]
+    let episode: [String]
+    let url: String
+    let created: String
 }
 
-struct CharacterOrigin: Decodable {
+struct CharacterInfo: Codable {
+    let count: Int
+    let pages: Int
+    let next: String
+    let prev: String?
+}
+
+struct CharacterOrigin: Codable {
     let name: String
     let url: String
+}
+
+struct CharacterLocation: Codable {
+    let name: String
+    let url: String
+}
+
+struct CharacterListData {
+    let name: String
+    let status: String
+    let origin: CharacterOrigin
 }

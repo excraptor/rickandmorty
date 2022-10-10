@@ -14,6 +14,12 @@ class CharacterViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    private var characterData: Characters? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +28,10 @@ class CharacterViewController: UIViewController {
         tableView.backgroundColor = .cyan
         
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "characterCell")
+        
+        characterViewModel.getCharactersFromApi() { [self] data in
+            characterData = data
+        }
         
         updateUI()
     }
@@ -35,7 +45,9 @@ class CharacterViewController: UIViewController {
 
 extension CharacterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        guard let characterData = characterData else { return 0 }
+        return characterData.results.count
+        
     }
 }
 
@@ -43,7 +55,9 @@ extension CharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as! CharacterTableViewCell
         cell.selectionStyle = .blue
-        cell.displayName.text = "Test name"
+        guard let characterData = characterData else { return UITableViewCell()}
+        let cellData = characterData.results[indexPath.row]
+        cell.configure(withData: CharacterListData(name: cellData.name, status: cellData.status, origin: cellData.origin))
         return cell
     }
 }
