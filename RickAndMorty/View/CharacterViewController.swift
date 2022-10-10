@@ -39,6 +39,7 @@ class CharacterViewController: UIViewController {
     private func updateUI() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.tableView.invalidateIntrinsicContentSize()
         }
     }
 }
@@ -47,7 +48,11 @@ extension CharacterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let characterData = characterData else { return 0 }
         return characterData.results.count
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // TODO: refactor properly
+        return 112.0
     }
 }
 
