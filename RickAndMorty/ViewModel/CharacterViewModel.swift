@@ -25,4 +25,8 @@ class CharacterViewModel {
     public func getImage(fromUrl url: String, completion: @escaping (UIImage) -> ()) {
         api.getImage(fromUrl: url, completion: completion)
     }
+    
+    public func getEpisodes(urls: [String], completion: @escaping ([CharacterEpisode]) -> ()) {
+        api.getEpisodes(urls: urls, completion: completion)
+    }
 }

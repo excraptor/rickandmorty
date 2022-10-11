@@ -20,7 +20,18 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet var species: UILabel!
     @IBOutlet var origin: UILabel!
     
-    var episodes = ["episode1", "episode2", "episode3"]
+    var episodeUrls: [String] = [] {
+        didSet {
+            viewModel.getEpisodes(urls: episodeUrls) { data in
+                self.episodes = data
+            }
+        }
+    }
+    var episodes: [CharacterEpisode]? {
+        didSet {
+            episodesTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +43,8 @@ class CharacterDetailViewController: UIViewController {
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
             DispatchQueue.main.async {
                 self.configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
+                self.episodeUrls = data.episode
             }
-            
         }
     }
     
@@ -52,14 +63,16 @@ class CharacterDetailViewController: UIViewController {
 
 extension CharacterDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        return episodes?.count ?? 0
     }
 }
 
 extension CharacterDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = episodes[indexPath.row]
+        cell.textLabel?.text = "Loading..."
+        guard let episodes = episodes else { return cell }
+        cell.textLabel?.text = episodes[indexPath.row].name
         return cell
     }
 }
