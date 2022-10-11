@@ -28,7 +28,10 @@ class CharacterDetailViewController: UIViewController {
         episodesTableView.dataSource = self
         
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
-            configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
+            DispatchQueue.main.async {
+                self.configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
+            }
+            
         }
     }
     
