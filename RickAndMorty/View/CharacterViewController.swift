@@ -11,6 +11,7 @@ import UIKit
 class CharacterViewController: UIViewController {
     
     private var characterViewModel: CharacterViewModel = CharacterViewModel()
+    public weak var coordinator: MainCoordinator?
     
     @IBOutlet var tableView: UITableView!
     
@@ -57,6 +58,11 @@ extension CharacterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // TODO: refactor properly
         return 112.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let characterID = characterData?.results[indexPath.row].id
+        coordinator?.showDetails(forCharacter: characterID!)
     }
 }
 

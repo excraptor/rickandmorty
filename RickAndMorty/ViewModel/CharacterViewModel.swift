@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CharacterViewModel {
     
@@ -17,7 +18,11 @@ class CharacterViewModel {
         }
     }
     
-    public func getSingleCharacterFromApi(withID id: Int, completion: @escaping (Characters) -> ()) {
-        api.getCharacter(detail: id, completion: completion)
+    public func getSingleCharacterFromApi(withID id: Int, completion: @escaping (CharacterModel) -> ()) {
+        api.getCharacter(id: id, completion: completion)
+    }
+    
+    public func getImage(fromUrl url: String, completion: @escaping (UIImage) -> ()) {
+        api.getImage(fromUrl: url, completion: completion)
     }
 }

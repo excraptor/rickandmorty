@@ -8,6 +8,10 @@
 import UIKit
 
 class CharacterDetailViewController: UIViewController {
+    
+    public weak var coordinator: MainCoordinator?
+    private var viewModel: CharacterViewModel = CharacterViewModel()
+    public var id: Int = 0
 
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
@@ -22,10 +26,18 @@ class CharacterDetailViewController: UIViewController {
         super.viewDidLoad()
         episodesTableView.delegate = self
         episodesTableView.dataSource = self
+        
+        viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
+            configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
+        }
     }
     
     public func configure(withData data: CharacterDetailData) {
-        image.image = data.image
+        viewModel.getImage(fromUrl: data.imageURL) { imageData in
+            DispatchQueue.main.async {
+                self.image.image = imageData
+            }
+        }
         name.text = data.name
         status.text = data.status
         species.text = data.species

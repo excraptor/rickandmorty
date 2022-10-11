@@ -58,5 +58,5 @@ struct CharacterDetailData {
     let status: String
     let species: String
     let origin: CharacterOrigin
-    let image: UIImage
+    let imageURL: String
 }
