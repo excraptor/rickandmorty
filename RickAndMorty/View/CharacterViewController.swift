@@ -24,9 +24,10 @@ class CharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Rick and Morty characters"
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .cyan
         
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "characterCell")
         

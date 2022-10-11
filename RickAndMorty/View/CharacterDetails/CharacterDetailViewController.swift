@@ -27,6 +27,8 @@ class CharacterDetailViewController: UIViewController {
         episodesTableView.delegate = self
         episodesTableView.dataSource = self
         
+        title = "Character details"
+        
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
             DispatchQueue.main.async {
                 self.configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
