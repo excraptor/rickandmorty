@@ -17,7 +17,9 @@ class CharacterViewController: UIViewController {
     
     private var characterData: Characters? {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
