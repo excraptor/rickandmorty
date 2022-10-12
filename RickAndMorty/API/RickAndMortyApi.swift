@@ -44,6 +44,31 @@ class RickAndMortyApi: API {
         dataTask.resume()
     }
     
+    public func getCharacters(fromUrls urls: [String], completion: @escaping ([CharacterModel]) -> ()) {
+        var episodeInfos = [CharacterModel]()
+        let group = DispatchGroup()
+        for characterUrl in urls {
+            group.enter()
+            let innertask = URLSession.shared.dataTask(with: URL(string: characterUrl)!) { data, response, error in
+                defer { group.leave() }
+                guard let data = data else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let characterInfo = try decoder.decode(CharacterModel.self, from: data)
+                    episodeInfos.append(characterInfo)
+                } catch {
+                    print("Error Getting Info for \(characterUrl):", error)
+                }
+
+            }
+            innertask.resume()
+        }
+        group.notify(queue: .main) {
+            completion(episodeInfos)
+        }
+    }
+    
     public func getCharacter(id: Int, completion: @escaping (CharacterModel) -> ()) {
         let url = baseURL.appendingPathComponent("/character").appendingPathComponent("/\(id)")
         
@@ -72,8 +97,8 @@ class RickAndMortyApi: API {
         dataTask.resume()
     }
     
-    public func getEpisodes(urls: [String], completion: @escaping ([CharacterEpisode]) -> ()) {
-        var episodeInfos = [CharacterEpisode]()
+    public func getEpisodes(urls: [String], completion: @escaping ([EpisodeModel]) -> ()) {
+        var episodeInfos = [EpisodeModel]()
         let group = DispatchGroup()
         for episodeUrl in urls {
             group.enter()
@@ -83,7 +108,7 @@ class RickAndMortyApi: API {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let episodeInfo = try decoder.decode(CharacterEpisode.self, from: data)
+                    let episodeInfo = try decoder.decode(EpisodeModel.self, from: data)
                     episodeInfos.append(episodeInfo)
                 } catch {
                     print("Error Getting Info for \(episodeUrl):", error)
@@ -97,4 +122,20 @@ class RickAndMortyApi: API {
         }
     }
     
+    public func getEpisode(id: Int, completion: @escaping (EpisodeModel) -> ()) {
+        let url = baseURL.appendingPathComponent("/episode").appendingPathComponent("/\(id)")
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let episodeData = try decoder.decode(EpisodeModel.self, from: data)
+                completion(episodeData)
+            } catch {
+                print("Error Getting Info for \(url):", error)
+            }
+        }
+        dataTask.resume()
+    }
 }
