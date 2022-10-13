@@ -11,8 +11,9 @@ import UIKit
 protocol Coordinator {
     var childCoordinators: [Coordinator] { get set }
     var navigationController: UINavigationController { get set }
-
+    
     func start()
+    func navigateTo(destination vc: CoordinatedViewController)
 }
 
 class MainCoordinator: Coordinator {
@@ -24,9 +25,14 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = CharacterViewController()
+        let vc = TabBarController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func navigateTo(destination vc: CoordinatedViewController) {
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func showDetails(forCharacter id: Int) {

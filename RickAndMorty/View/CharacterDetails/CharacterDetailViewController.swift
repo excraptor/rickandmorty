@@ -7,11 +7,12 @@
 
 import UIKit
 
-class CharacterDetailViewController: UIViewController {
+class CharacterDetailViewController: UIViewController, CoordinatedViewController {
     
     public weak var coordinator: MainCoordinator?
     private var viewModel: CharacterViewModel = CharacterViewModel()
     public var id: Int = 0
+    private var characterModel: CharacterModel?
 
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
@@ -19,6 +20,12 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet var status: UILabel!
     @IBOutlet var species: UILabel!
     @IBOutlet var origin: UILabel!
+    
+    private var isFavourite: Bool = false {
+        didSet {
+            navigationItem.rightBarButtonItem!.image = isFavourite ? UIImage(systemName: "heart.fill") :  UIImage(systemName: "heart")
+        }
+    }
     
     var episodeUrls: [String] = [] {
         didSet {
@@ -39,9 +46,14 @@ class CharacterDetailViewController: UIViewController {
         episodesTableView.dataSource = self
         
         title = "Character details"
+        let favouritesButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouritesPressed))
+        favouritesButton.tintColor = .red
+        navigationItem.rightBarButtonItem = favouritesButton
+        isFavourite = viewModel.isFavourite(id: id)
         
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
             DispatchQueue.main.async {
+                self.characterModel = data
                 self.configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
                 self.episodeUrls = data.episode
             }
@@ -58,6 +70,13 @@ class CharacterDetailViewController: UIViewController {
         status.text = data.status
         species.text = data.species
         origin.text = data.origin.name
+    }
+    
+    @objc private func favouritesPressed() {
+        guard let characterModel = characterModel else { return }
+
+        isFavourite.toggle()
+        viewModel.toggleFavourite(character: characterModel, isFavourite: isFavourite)
     }
 }
 

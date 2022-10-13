@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CharacterViewController: UIViewController {
+class CharacterViewController: UIViewController, CoordinatedViewController {
     
     private var characterViewModel: CharacterViewModel = CharacterViewModel()
     public weak var coordinator: MainCoordinator?
