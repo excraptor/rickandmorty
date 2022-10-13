@@ -21,7 +21,7 @@ class CharacterViewController: UIViewController, CoordinatedViewController {
             characters = characterData?.results
         }
     }
-    private var characters: [CharacterModel]? {
+    public var characters: [CharacterModel]? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -38,13 +38,6 @@ class CharacterViewController: UIViewController, CoordinatedViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
-        let sortMenu = initSortMenu()
-        let sortButton = UIBarButtonItem(title: "Menu", image: UIImage(systemName: "list.bullet"), primaryAction: nil, menu: sortMenu)
-        sortButton.tintColor = .gray
-        navigationItem.rightBarButtonItem = sortButton
-        
-
-        
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "characterCell")
         
         characterViewModel.getCharactersFromApi() { [self] data in
@@ -54,43 +47,11 @@ class CharacterViewController: UIViewController, CoordinatedViewController {
         updateUI()
     }
     
-    private func updateUI() {
+    public func updateUI() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.tableView.invalidateIntrinsicContentSize()
         }
-    }
-    
-    private func navigateToDetail() {
-        // TODO: implement - but rather implement Coordinator pattern
-    }
-    
-    private func initSortMenu() -> UIMenu {
-        
-        var menuItems: [UIAction] {
-            return [
-                UIAction(title: "Name ascendig", image: UIImage(systemName: "arrow.down"), handler: { _ in
-                    self.sort(ascending: true)
-                }),
-                UIAction(title: "Name descending", image: UIImage(systemName: "arrow.up"), handler: { _ in
-                    self.sort(ascending: false)
-                }),
-            ]
-        }
-
-        var sortMenu: UIMenu {
-            return UIMenu(title: "Sort", image: nil, identifier: nil, options: [], children: menuItems)
-        }
-        return sortMenu
-    }
-    
-    @objc private func sort(ascending: Bool) {
-        if ascending {
-            characters?.sort() { $0.name < $1.name}
-        } else {
-            characters?.sort() { $0.name > $1.name}
-        }
-        updateUI()
     }
     
 }

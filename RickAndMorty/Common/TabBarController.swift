@@ -11,6 +11,7 @@ import UIKit
 class TabBarController: UITabBarController {
     
     var coordinator: MainCoordinator?
+    var viewModel: CharacterViewModel = CharacterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,11 @@ class TabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let sortMenu = initSortMenu()
+        let sortButton = UIBarButtonItem(title: "Menu", image: UIImage(systemName: "list.bullet"), primaryAction: nil, menu: sortMenu)
+        sortButton.tintColor = .gray
+        navigationItem.rightBarButtonItem = sortButton
         
         let characterTabVC = CharacterViewController()
         characterTabVC.coordinator = coordinator
@@ -32,6 +38,35 @@ class TabBarController: UITabBarController {
         favouritesTabVC.tabBarItem = favouritesTabItem
         
         viewControllers = [characterTabVC, favouritesTabVC]
+    }
+    
+    private func initSortMenu() -> UIMenu {
+        
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "Name ascendig", image: UIImage(systemName: "arrow.down"), handler: { _ in
+                    self.sort(ascending: true)
+                }),
+                UIAction(title: "Name descending", image: UIImage(systemName: "arrow.up"), handler: { _ in
+                    self.sort(ascending: false)
+                }),
+            ]
+        }
+
+        var sortMenu: UIMenu {
+            return UIMenu(title: "Sort", image: nil, identifier: nil, options: [], children: menuItems)
+        }
+        return sortMenu
+    }
+    
+    @objc private func sort(ascending: Bool) {
+        let characterViewController = (viewControllers![0] as! CharacterViewController)
+        if ascending {
+            characterViewController.characters?.sort() { $0.name < $1.name}
+        } else {
+            characterViewController.characters?.sort() { $0.name > $1.name}
+        }
+        characterViewController.updateUI()
     }
 }
 
