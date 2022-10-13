@@ -20,6 +20,7 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
     @IBOutlet var status: UILabel!
     @IBOutlet var species: UILabel!
     @IBOutlet var origin: UILabel!
+    @IBOutlet var scroller: UIScrollView!
     
     private var isFavourite: Bool = false {
         didSet {
@@ -44,6 +45,11 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
         super.viewDidLoad()
         episodesTableView.delegate = self
         episodesTableView.dataSource = self
+        scroller.isScrollEnabled = true
+        let contentRect: CGRect = scroller.subviews.reduce(into: .zero) { rect, view in
+            rect = rect.union(view.frame)
+        }
+        scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: contentRect.size.height)
         
         title = "Character details"
         let favouritesButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouritesPressed))
