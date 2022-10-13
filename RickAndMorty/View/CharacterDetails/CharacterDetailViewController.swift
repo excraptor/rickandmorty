@@ -27,7 +27,7 @@ class CharacterDetailViewController: UIViewController {
             }
         }
     }
-    var episodes: [CharacterEpisode]? {
+    var episodes: [EpisodeModel]? {
         didSet {
             episodesTableView.reloadData()
         }
@@ -64,6 +64,9 @@ class CharacterDetailViewController: UIViewController {
 extension CharacterDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes?.count ?? 0
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.showDetails(forEpisode: episodes![indexPath.row].id)
     }
 }
 

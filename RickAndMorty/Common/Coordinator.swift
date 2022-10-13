@@ -35,4 +35,11 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showDetails(forEpisode id: Int) {
+        let vc = EpisodeDetailViewController()
+        vc.id = id
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
