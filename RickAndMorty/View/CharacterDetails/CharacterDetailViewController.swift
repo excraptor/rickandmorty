@@ -46,10 +46,14 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
         episodesTableView.delegate = self
         episodesTableView.dataSource = self
         scroller.isScrollEnabled = true
+        let screenBounds = UIScreen.main.bounds
+        
         let contentRect: CGRect = scroller.subviews.reduce(into: .zero) { rect, view in
             rect = rect.union(view.frame)
         }
-        scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: contentRect.size.height)
+        let heightDiff = abs(contentRect.size.height - screenBounds.height)
+        let scrollViewHeight = heightDiff > 400 ? contentRect.size.height : contentRect.size.height + (400-heightDiff)
+        scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: scrollViewHeight)
         
         title = "Character details"
         let favouritesButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouritesPressed))
