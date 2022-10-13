@@ -92,7 +92,6 @@ extension CharacterDetailViewController: UITableViewDelegate {
 extension CharacterDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Loading..."
         guard let episodes = episodes else { return cell }
         cell.textLabel?.text = episodes[indexPath.row].name
         return cell

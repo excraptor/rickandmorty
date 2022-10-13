@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var coordinator: MainCoordinator?
     var viewModel: CharacterViewModel = CharacterViewModel()
@@ -16,7 +16,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        //coordinator = MainCoordinator(navigationController: navigationController!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,12 +66,5 @@ class TabBarController: UITabBarController {
             characterViewController.characters?.sort() { $0.name > $1.name}
         }
         characterViewController.updateUI()
-    }
-}
-
-extension TabBarController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        //coordinator?.navigateTo(destination: viewController as! CoordinatedViewController)
-        print("### navigateto: \(String(describing: viewController))")
     }
 }

@@ -12,7 +12,6 @@ extension UITableView {
     func setNoDataPlaceholder(_ message: String) {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         label.text = message
-        // styling
         label.sizeToFit()
         label.textAlignment = .center
         label.textColor = .gray

@@ -15,7 +15,6 @@ class DataController {
     public static var instance: DataController = DataController()
     
     private init() {
-        // print(container.persistentStoreDescriptions.first?.url)
         container.loadPersistentStores { description, error in
                 if let error = error {
                     print("Core Data failed to load: \(error.localizedDescription)")

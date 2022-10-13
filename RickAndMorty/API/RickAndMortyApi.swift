@@ -21,7 +21,6 @@ class RickAndMortyApi: API {
     private init() { }
     
     func fetch(endpoint: String, completion: @escaping (Characters) -> ()) {
-        print("### fetching \(endpoint)")
         getCharacters { data in
             completion(data)
         }

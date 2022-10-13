@@ -32,10 +32,6 @@ class FavouritesViewController: UIViewController, CoordinatedViewController {
         
         favourites = viewModel.getFavourites()
     }
-    
-    @objc func removeFromFavourites() {
-        print("removed something...")
-    }
 
 }
 
@@ -51,8 +47,6 @@ extension FavouritesViewController: UITableViewDataSource {
         guard let favourites = favourites else { return cell }
         cell.label.text = favourites[indexPath.row].name
         cell.labelIcon.image = UIImage(systemName: "trash")
-        let tapGesture = UITapGestureRecognizer (target: self, action: #selector(removeFromFavourites))
-        cell.labelIcon.addGestureRecognizer(tapGesture)
         return cell
     }
     
@@ -64,12 +58,9 @@ extension FavouritesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
             guard let favourites = favourites else { return }
             viewModel.removeCharacter(id: Int(favourites[indexPath.row].id))
             self.favourites!.remove(at: indexPath.row)
-            print("### favourites.count = \(favourites.count)")
-            // Then, delete the row from the table itself
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
