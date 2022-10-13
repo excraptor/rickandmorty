@@ -21,6 +21,15 @@
 		F4670BD428F4B47C00255689 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4670BD228F4B47C00255689 /* CharacterDetailViewController.swift */; };
 		F4670BD528F4B47C00255689 /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4670BD328F4B47C00255689 /* CharacterDetailViewController.xib */; };
 		F4670BD828F5863600255689 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4670BD728F5863600255689 /* Coordinator.swift */; };
+		F4670BE228F754A300255689 /* Characters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4670BE028F754A300255689 /* Characters.xcdatamodeld */; };
+		F4670BE528F759BB00255689 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4670BE428F759BB00255689 /* DataController.swift */; };
+		F4E9E37028F83FF700B0E30B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E36F28F83FF700B0E30B /* TabBarController.swift */; };
+		F4E9E37328F842EC00B0E30B /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E37128F842EC00B0E30B /* FavouritesViewController.swift */; };
+		F4E9E37428F842EC00B0E30B /* FavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E9E37228F842EC00B0E30B /* FavouritesViewController.xib */; };
+		F4E9E37728F8442500B0E30B /* CoordinatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E37628F8442500B0E30B /* CoordinatedViewController.swift */; };
+		F4E9E37E28F84D1C00B0E30B /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E37C28F84D1C00B0E30B /* LabelTableViewCell.swift */; };
+		F4E9E37F28F84D1C00B0E30B /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E9E37D28F84D1C00B0E30B /* LabelTableViewCell.xib */; };
+		F4E9E38128F85FEC00B0E30B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E38028F85FEC00B0E30B /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +49,15 @@
 		F4670BD228F4B47C00255689 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		F4670BD328F4B47C00255689 /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		F4670BD728F5863600255689 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F4670BE128F754A300255689 /* Character.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Character.xcdatamodel; sourceTree = "<group>"; };
+		F4670BE428F759BB00255689 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		F4E9E36F28F83FF700B0E30B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F4E9E37128F842EC00B0E30B /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		F4E9E37228F842EC00B0E30B /* FavouritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesViewController.xib; sourceTree = "<group>"; };
+		F4E9E37628F8442500B0E30B /* CoordinatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatedViewController.swift; sourceTree = "<group>"; };
+		F4E9E37C28F84D1C00B0E30B /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		F4E9E37D28F84D1C00B0E30B /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
+		F4E9E38028F85FEC00B0E30B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +90,7 @@
 		F431640D28F46D0C00915F0A /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				F4670BE328F759A700255689 /* Database */,
 				F4670BD628F5861D00255689 /* Common */,
 				F431642C28F4747100915F0A /* API */,
 				F431642428F4707C00915F0A /* ViewModel */,
@@ -82,6 +101,7 @@
 				F431641728F46D1000915F0A /* Assets.xcassets */,
 				F431641928F46D1000915F0A /* LaunchScreen.storyboard */,
 				F431641C28F46D1000915F0A /* Info.plist */,
+				F4670BE028F754A300255689 /* Characters.xcdatamodeld */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -97,10 +117,12 @@
 		F431642328F4706F00915F0A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4E9E37528F842F200B0E30B /* Favourites */,
 				F4670BD128F4B44900255689 /* CharacterDetails */,
 				F431643128F47DD800915F0A /* Cells */,
 				F431642828F4737700915F0A /* CharacterViewController.swift */,
 				F431643828F48D1B00915F0A /* CharacterView.xib */,
+				F4E9E37628F8442500B0E30B /* CoordinatedViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +148,8 @@
 			children = (
 				F4670BCD28F495DB00255689 /* CharacterTableViewCell.swift */,
 				F4670BCE28F495DB00255689 /* CharacterTableViewCell.xib */,
+				F4E9E37C28F84D1C00B0E30B /* LabelTableViewCell.swift */,
+				F4E9E37D28F84D1C00B0E30B /* LabelTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -143,8 +167,27 @@
 			isa = PBXGroup;
 			children = (
 				F4670BD728F5863600255689 /* Coordinator.swift */,
+				F4E9E36F28F83FF700B0E30B /* TabBarController.swift */,
+				F4E9E38028F85FEC00B0E30B /* Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		F4670BE328F759A700255689 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F4670BE428F759BB00255689 /* DataController.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		F4E9E37528F842F200B0E30B /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				F4E9E37128F842EC00B0E30B /* FavouritesViewController.swift */,
+				F4E9E37228F842EC00B0E30B /* FavouritesViewController.xib */,
+			);
+			path = Favourites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +250,11 @@
 			files = (
 				F431641B28F46D1000915F0A /* LaunchScreen.storyboard in Resources */,
 				F431641828F46D1000915F0A /* Assets.xcassets in Resources */,
+				F4E9E37428F842EC00B0E30B /* FavouritesViewController.xib in Resources */,
 				F431643928F48D1B00915F0A /* CharacterView.xib in Resources */,
 				F4670BD528F4B47C00255689 /* CharacterDetailViewController.xib in Resources */,
 				F4670BD028F495DB00255689 /* CharacterTableViewCell.xib in Resources */,
+				F4E9E37F28F84D1C00B0E30B /* LabelTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,12 +266,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F431642E28F4748100915F0A /* RickAndMortyApi.swift in Sources */,
+				F4670BE528F759BB00255689 /* DataController.swift in Sources */,
 				F4670BCF28F495DB00255689 /* CharacterTableViewCell.swift in Sources */,
+				F4E9E37728F8442500B0E30B /* CoordinatedViewController.swift in Sources */,
 				F431640F28F46D0C00915F0A /* AppDelegate.swift in Sources */,
+				F4E9E37328F842EC00B0E30B /* FavouritesViewController.swift in Sources */,
 				F431641128F46D0C00915F0A /* SceneDelegate.swift in Sources */,
 				F431642928F4737700915F0A /* CharacterViewController.swift in Sources */,
 				F4670BD428F4B47C00255689 /* CharacterDetailViewController.swift in Sources */,
 				F431642B28F4743C00915F0A /* CharacterViewModel.swift in Sources */,
+				F4670BE228F754A300255689 /* Characters.xcdatamodeld in Sources */,
+				F4E9E38128F85FEC00B0E30B /* Extensions.swift in Sources */,
+				F4E9E37E28F84D1C00B0E30B /* LabelTableViewCell.swift in Sources */,
+				F4E9E37028F83FF700B0E30B /* TabBarController.swift in Sources */,
 				F431642628F470B600915F0A /* Character.swift in Sources */,
 				F4670BD828F5863600255689 /* Coordinator.swift in Sources */,
 			);
@@ -436,6 +488,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4670BE028F754A300255689 /* Characters.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4670BE128F754A300255689 /* Character.xcdatamodel */,
+			);
+			currentVersion = F4670BE128F754A300255689 /* Character.xcdatamodel */;
+			path = Characters.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F431640328F46D0C00915F0A /* Project object */;
 }
