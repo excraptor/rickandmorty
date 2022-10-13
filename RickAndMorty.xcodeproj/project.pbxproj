@@ -30,6 +30,9 @@
 		F4E9E37E28F84D1C00B0E30B /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E37C28F84D1C00B0E30B /* LabelTableViewCell.swift */; };
 		F4E9E37F28F84D1C00B0E30B /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E9E37D28F84D1C00B0E30B /* LabelTableViewCell.xib */; };
 		F4E9E38128F85FEC00B0E30B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E38028F85FEC00B0E30B /* Extensions.swift */; };
+		F4670BDC28F5EEB300255689 /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4670BDA28F5EEB300255689 /* EpisodeDetailViewController.swift */; };
+		F4670BDD28F5EEB300255689 /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4670BDB28F5EEB300255689 /* EpisodeDetailViewController.xib */; };
+		F4670BDF28F5EF4F00255689 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4670BDE28F5EF4F00255689 /* EpisodeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		F4E9E37C28F84D1C00B0E30B /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		F4E9E37D28F84D1C00B0E30B /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 		F4E9E38028F85FEC00B0E30B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F4670BDA28F5EEB300255689 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		F4670BDB28F5EEB300255689 /* EpisodeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailViewController.xib; sourceTree = "<group>"; };
+		F4670BDE28F5EF4F00255689 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E9E37528F842F200B0E30B /* Favourites */,
+				F4670BD928F5EE9B00255689 /* EpisodeDetails */,
 				F4670BD128F4B44900255689 /* CharacterDetails */,
 				F431643128F47DD800915F0A /* Cells */,
 				F431642828F4737700915F0A /* CharacterViewController.swift */,
@@ -131,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F431642A28F4743C00915F0A /* CharacterViewModel.swift */,
+				F4670BDE28F5EF4F00255689 /* EpisodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +196,15 @@
 				F4E9E37228F842EC00B0E30B /* FavouritesViewController.xib */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		F4670BD928F5EE9B00255689 /* EpisodeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4670BDA28F5EEB300255689 /* EpisodeDetailViewController.swift */,
+				F4670BDB28F5EEB300255689 /* EpisodeDetailViewController.xib */,
+			);
+			path = EpisodeDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +272,7 @@
 				F4670BD528F4B47C00255689 /* CharacterDetailViewController.xib in Resources */,
 				F4670BD028F495DB00255689 /* CharacterTableViewCell.xib in Resources */,
 				F4E9E37F28F84D1C00B0E30B /* LabelTableViewCell.xib in Resources */,
+				F4670BDD28F5EEB300255689 /* EpisodeDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +289,10 @@
 				F4E9E37728F8442500B0E30B /* CoordinatedViewController.swift in Sources */,
 				F431640F28F46D0C00915F0A /* AppDelegate.swift in Sources */,
 				F4E9E37328F842EC00B0E30B /* FavouritesViewController.swift in Sources */,
+				F4670BDF28F5EF4F00255689 /* EpisodeViewModel.swift in Sources */,
 				F431641128F46D0C00915F0A /* SceneDelegate.swift in Sources */,
 				F431642928F4737700915F0A /* CharacterViewController.swift in Sources */,
+				F4670BDC28F5EEB300255689 /* EpisodeDetailViewController.swift in Sources */,
 				F4670BD428F4B47C00255689 /* CharacterDetailViewController.swift in Sources */,
 				F431642B28F4743C00915F0A /* CharacterViewModel.swift in Sources */,
 				F4670BE228F754A300255689 /* Characters.xcdatamodeld in Sources */,

@@ -61,7 +61,7 @@ struct CharacterDetailData {
     let imageURL: String
 }
 
-struct CharacterEpisode: Codable {
+struct EpisodeModel: Codable {
     let id: Int
     let name: String
     let airDate: String

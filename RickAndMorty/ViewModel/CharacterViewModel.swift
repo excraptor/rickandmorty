@@ -28,7 +28,7 @@ class CharacterViewModel {
         api.getImage(fromUrl: url, completion: completion)
     }
     
-    public func getEpisodes(urls: [String], completion: @escaping ([CharacterEpisode]) -> ()) {
+    public func getEpisodes(urls: [String], completion: @escaping ([EpisodeModel]) -> ()) {
         api.getEpisodes(urls: urls, completion: completion)
     }
     
