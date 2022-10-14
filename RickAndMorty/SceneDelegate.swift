@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = MainCoordinator(navigationController: navigationController, splitViewController: splitViewController)
         let tabBarController = coordinator!.start()
         if UIDevice.current.userInterfaceIdiom == .pad {
-            splitViewController.viewControllers = [tabBarController, PlaceholderViewController()]
+            splitViewController.viewControllers = [UINavigationController(rootViewController: tabBarController), PlaceholderViewController()]
             window.rootViewController = splitViewController
         } else {
             navigationController.pushViewController(tabBarController, animated: false)
