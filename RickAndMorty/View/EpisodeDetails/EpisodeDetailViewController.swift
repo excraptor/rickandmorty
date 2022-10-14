@@ -72,6 +72,7 @@ extension EpisodeDetailViewController: UITableViewDataSource {
         let cell = UITableViewCell()
         cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let characters = characters else { return UITableViewCell() }
+        cell.accessibilityHint = "View details for \(characters[indexPath.row].name)"
         cell.textLabel?.text = characters[indexPath.row].name
         return cell
     }

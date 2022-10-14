@@ -52,6 +52,7 @@ extension FavouritesViewController: UITableViewDataSource {
         cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let favourites = characters else { return cell }
         cell.label.text = favourites[indexPath.row].name
+        cell.accessibilityHint = "View details for \(favourites[indexPath.row].name), or swipe left to remove from favourites"
         return cell
     }
     

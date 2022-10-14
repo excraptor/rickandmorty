@@ -81,6 +81,7 @@ extension CharacterViewController: UITableViewDataSource {
         guard let characters = characters else { return UITableViewCell()}
         let cellData = characters[indexPath.row]
         cell.configure(withData: CharacterListData(name: cellData.name, status: cellData.status!, origin: cellData.origin!))
+        cell.accessibilityHint = "View details for \(cellData.name)"
         return cell
     }
 }
