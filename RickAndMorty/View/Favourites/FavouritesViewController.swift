@@ -52,7 +52,6 @@ extension FavouritesViewController: UITableViewDataSource {
         cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let favourites = characters else { return cell }
         cell.label.text = favourites[indexPath.row].name
-        cell.labelIcon.image = UIImage(systemName: "trash")
         return cell
     }
     

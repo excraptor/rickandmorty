@@ -23,16 +23,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="p0K-L5-6Zu">
-                        <rect key="frame" x="273" y="12" width="31" height="31"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="BXv-Sl-m31" id="PUF-CD-9yT"/>
-                <outlet property="labelIcon" destination="p0K-L5-6Zu" id="7qc-72-ZxT"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="106.47321428571428"/>
         </tableViewCell>

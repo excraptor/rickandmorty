@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: Coordinator?
+    let splitViewController = UISplitViewController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,9 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         let navigationController =  UINavigationController()
-        coordinator = MainCoordinator(navigationController: navigationController)
-        coordinator?.start()
-        window.rootViewController = navigationController
+        coordinator = MainCoordinator(navigationController: navigationController, splitViewController: splitViewController)
+        let tabBarController = coordinator!.start()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            splitViewController.viewControllers = [tabBarController, PlaceholderViewController()]
+            window.rootViewController = splitViewController
+        } else {
+            navigationController.pushViewController(tabBarController, animated: false)
+            window.rootViewController = navigationController
+        }
         self.window = window
         window.makeKeyAndVisible()
     }

@@ -59,14 +59,6 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </view>
-        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="Txg-QV-eaA">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <viewLayoutGuide key="safeArea" id="wSw-0m-tYU"/>
-            <viewLayoutGuide key="contentLayoutGuide" id="Pri-mu-cwv"/>
-            <viewLayoutGuide key="frameLayoutGuide" id="cwN-7c-95u"/>
-            <point key="canvasLocation" x="-97" y="-548"/>
-        </scrollView>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">

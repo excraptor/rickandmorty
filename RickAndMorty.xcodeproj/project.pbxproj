@@ -36,6 +36,7 @@
 		F4E9E38E28F8C27000B0E30B /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E38D28F8C27000B0E30B /* RickAndMortyTests.swift */; };
 		F4E9E39B28F8C3D400B0E30B /* RickAndMortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E39A28F8C3D400B0E30B /* RickAndMortyUITests.swift */; };
 		F4E9E39D28F8C3D400B0E30B /* RickAndMortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E39C28F8C3D400B0E30B /* RickAndMortyUITestsLaunchTests.swift */; };
+		F4E9E3A528F9865D00B0E30B /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9E3A428F9865D00B0E30B /* PlaceholderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		F4E9E39828F8C3D400B0E30B /* RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E9E39A28F8C3D400B0E30B /* RickAndMortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITests.swift; sourceTree = "<group>"; };
 		F4E9E39C28F8C3D400B0E30B /* RickAndMortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F4E9E3A428F9865D00B0E30B /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		F431642328F4706F00915F0A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4E9E3A328F9863E00B0E30B /* Placeholder */,
 				F4E9E37528F842F200B0E30B /* Favourites */,
 				F4670BD928F5EE9B00255689 /* EpisodeDetails */,
 				F4670BD128F4B44900255689 /* CharacterDetails */,
@@ -265,6 +268,14 @@
 				F4E9E39C28F8C3D400B0E30B /* RickAndMortyUITestsLaunchTests.swift */,
 			);
 			path = RickAndMortyUITests;
+			sourceTree = "<group>";
+		};
+		F4E9E3A328F9863E00B0E30B /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				F4E9E3A428F9865D00B0E30B /* PlaceholderViewController.swift */,
+			);
+			path = Placeholder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +425,7 @@
 				F431642928F4737700915F0A /* CharacterViewController.swift in Sources */,
 				F4670BDC28F5EEB300255689 /* EpisodeDetailViewController.swift in Sources */,
 				F4670BD428F4B47C00255689 /* CharacterDetailViewController.swift in Sources */,
+				F4E9E3A528F9865D00B0E30B /* PlaceholderViewController.swift in Sources */,
 				F431642B28F4743C00915F0A /* CharacterViewModel.swift in Sources */,
 				F4670BE228F754A300255689 /* Characters.xcdatamodeld in Sources */,
 				F4E9E38128F85FEC00B0E30B /* Extensions.swift in Sources */,

@@ -55,7 +55,7 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
         }
         let heightDiff = abs(contentRect.size.height - screenBounds.height)
         let scrollViewHeight = heightDiff > 400 ? contentRect.size.height : contentRect.size.height + (400-heightDiff)
-        scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: scrollViewHeight)
+        scroller.contentSize = CGSize(width: contentRect.width, height: scrollViewHeight)
         
         title = "Character details"
         

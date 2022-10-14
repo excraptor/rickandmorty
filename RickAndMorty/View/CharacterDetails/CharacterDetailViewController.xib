@@ -100,9 +100,6 @@
                             <rect key="frame" x="0.0" y="600" width="414" height="230"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="230" id="iwQ-fG-GHR"/>
-                            </constraints>
                         </tableView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="Bv5-Wp-0fp"/>

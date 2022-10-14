@@ -11,21 +11,23 @@ import UIKit
 protocol Coordinator {
     var navigationController: UINavigationController { get set }
     
-    func start()
+    func start() -> TabBarController
     func navigateTo(destination vc: CoordinatedViewController)
 }
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var splitViewController: UISplitViewController
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, splitViewController: UISplitViewController) {
         self.navigationController = navigationController
+        self.splitViewController = splitViewController
     }
 
-    func start() {
+    func start() -> TabBarController {
         let vc = TabBarController()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        return vc
     }
     
     func navigateTo(destination vc: CoordinatedViewController) {
@@ -38,6 +40,9 @@ class MainCoordinator: Coordinator {
         vc.id = id
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
+        if splitViewController.viewControllers.count == 2 {
+            splitViewController.viewControllers[1]  = navigationController
+        }
     }
     
     func showDetails(forEpisode id: Int) {

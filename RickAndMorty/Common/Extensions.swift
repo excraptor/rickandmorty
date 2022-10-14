@@ -15,6 +15,7 @@ extension UITableView {
         label.sizeToFit()
         label.textAlignment = .center
         label.textColor = .gray
+        label.numberOfLines = 0
 
         self.isScrollEnabled = false
         self.backgroundView = label
