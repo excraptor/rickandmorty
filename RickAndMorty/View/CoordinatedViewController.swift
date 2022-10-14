@@ -10,4 +10,11 @@ import UIKit
 
 protocol CoordinatedViewController: UIViewController {
     var coordinator: MainCoordinator? { get set }
+
+}
+
+protocol HasCharacters: UIViewController {
+    var characters: [CharacterModel]? { get set }
+    
+    func updateUI()
 }

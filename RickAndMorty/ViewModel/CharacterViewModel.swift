@@ -40,7 +40,7 @@ class CharacterViewModel {
         database.removeCharacter(id: character.id)
     }
     
-    public func getFavourites() -> [Character]? {
+    public func getFavourites() -> [CharacterModel]? {
         return database.getFavourites()
     }
     

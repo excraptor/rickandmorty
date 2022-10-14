@@ -64,8 +64,8 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
             DispatchQueue.main.async {
                 self.characterModel = data
-                self.configure(withData: CharacterDetailData(name: data.name, status: data.status, species: data.species, origin: data.origin, imageURL: data.image))
-                self.episodeUrls = data.episode
+                self.configure(withData: CharacterDetailData(name: data.name, status: data.status!, species: data.species!, origin: data.origin!, imageURL: data.image!))
+                self.episodeUrls = data.episode!
             }
         }
     }

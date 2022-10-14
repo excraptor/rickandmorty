@@ -22,12 +22,14 @@ class DataController {
             }
     }
     
-    func getFavourites() -> [Character]? {
+    func getFavourites() -> [CharacterModel]? {
         let fetchRequest: NSFetchRequest<Character> = Character.fetchRequest()
         do {
             // Peform Fetch Request
-            let characters = try managedContext.fetch(fetchRequest)
-
+            let  charactersData = try managedContext.fetch(fetchRequest)
+            let characters = charactersData.map { char in
+                return CharacterModel(id: Int(char.id), name: char.name!)
+            }
             return characters
         } catch {
             print("Unable to Fetch Workouts, (\(error))")

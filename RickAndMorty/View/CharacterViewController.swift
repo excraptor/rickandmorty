@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CharacterViewController: UIViewController, CoordinatedViewController {
+class CharacterViewController: UIViewController, CoordinatedViewController, HasCharacters {
     
     private var characterViewModel: CharacterViewModel = CharacterViewModel()
     public weak var coordinator: MainCoordinator?
@@ -79,7 +79,7 @@ extension CharacterViewController: UITableViewDataSource {
         cell.selectionStyle = .blue
         guard let characters = characters else { return UITableViewCell()}
         let cellData = characters[indexPath.row]
-        cell.configure(withData: CharacterListData(name: cellData.name, status: cellData.status, origin: cellData.origin))
+        cell.configure(withData: CharacterListData(name: cellData.name, status: cellData.status!, origin: cellData.origin!))
         return cell
     }
 }

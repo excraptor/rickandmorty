@@ -58,8 +58,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         return sortMenu
     }
     
-    @objc private func sort(ascending: Bool) {
-        let characterViewController = (viewControllers![0] as! CharacterViewController)
+    private func sort(ascending: Bool) {
+        let characterViewController = viewControllers![selectedIndex] as! HasCharacters
+        
         if ascending {
             characterViewController.characters?.sort() { $0.name < $1.name}
         } else {

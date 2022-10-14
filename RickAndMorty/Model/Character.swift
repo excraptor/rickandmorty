@@ -18,16 +18,57 @@ struct Characters: Codable {
 struct CharacterModel: Codable {
     let id: Int
     let name: String
-    let status: String
-    let species: String
-    let type: String
-    let gender: String
-    let origin: CharacterOrigin
-    let location: CharacterLocation
-    let image: String
-    let episode: [String]
-    let url: String
-    let created: String
+    let status: String?
+    let species: String?
+    let type: String?
+    let gender: String?
+    let origin: CharacterOrigin?
+    let location: CharacterLocation?
+    let image: String?
+    let episode: [String]?
+    let url: String?
+    let created: String?
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+        self.status = nil
+        self.species = nil
+        self.type = nil
+        self.gender = nil
+        self.origin = nil
+        self.location = nil
+        self.image = nil
+        self.episode = nil
+        self.url = nil
+        self.created = nil
+    }
+    
+    init(id: Int,
+         name: String,
+         status: String,
+         species: String,
+         type: String,
+         gender: String,
+         origin: CharacterOrigin,
+         location: CharacterLocation,
+         image: String,
+         episode: [String],
+         url: String,
+         created: String) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
 }
 
 struct CharacterInfo: Codable {
