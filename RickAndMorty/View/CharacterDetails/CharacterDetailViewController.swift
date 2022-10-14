@@ -25,6 +25,8 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
     private var isFavourite: Bool = false {
         didSet {
             navigationItem.rightBarButtonItem!.image = isFavourite ? UIImage(systemName: "heart.fill") :  UIImage(systemName: "heart")
+            navigationItem.rightBarButtonItem!.accessibilityLabel = isFavourite ? "Remove from favourites" : "Add to favourites"
+            navigationItem.rightBarButtonItem!.accessibilityHint = isFavourite ?  "Double tap to remove from favourites" : "Double tap to mark this character as a favourite"
         }
     }
     
@@ -56,9 +58,11 @@ class CharacterDetailViewController: UIViewController, CoordinatedViewController
         scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: scrollViewHeight)
         
         title = "Character details"
+        
         let favouritesButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouritesPressed))
         favouritesButton.tintColor = .red
         navigationItem.rightBarButtonItem = favouritesButton
+        navigationItem.rightBarButtonItem!.accessibilityLabel = "Add to favourites"
         isFavourite = viewModel.isFavourite(id: id)
         
         viewModel.getSingleCharacterFromApi(withID: id) { [self] data in
@@ -102,6 +106,8 @@ extension CharacterDetailViewController: UITableViewDelegate {
 extension CharacterDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.accessibilityTraits = UIAccessibilityTraits.button
+        cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let episodes = episodes else { return cell }
         cell.textLabel?.text = episodes[indexPath.row].name
         return cell

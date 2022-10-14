@@ -49,6 +49,7 @@ extension FavouritesViewController: UITableViewDelegate {
 extension FavouritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LabelTableViewCell
+        cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let favourites = characters else { return cell }
         cell.label.text = favourites[indexPath.row].name
         cell.labelIcon.image = UIImage(systemName: "trash")

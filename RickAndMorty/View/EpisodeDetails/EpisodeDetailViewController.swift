@@ -70,6 +70,7 @@ extension EpisodeDetailViewController: UITableViewDelegate {
 extension EpisodeDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.accessibilityTraits = UIAccessibilityTraits.button
         guard let characters = characters else { return UITableViewCell() }
         cell.textLabel?.text = characters[indexPath.row].name
         return cell

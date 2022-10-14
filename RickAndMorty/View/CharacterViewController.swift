@@ -76,6 +76,7 @@ extension CharacterViewController: UITableViewDelegate {
 extension CharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as! CharacterTableViewCell
+        cell.accessibilityTraits = UIAccessibilityTraits.button
         cell.selectionStyle = .blue
         guard let characters = characters else { return UITableViewCell()}
         let cellData = characters[indexPath.row]
